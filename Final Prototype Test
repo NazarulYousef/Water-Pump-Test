@@ -1,0 +1,36 @@
+int val = 0;
+int watersensor = A0;
+int Motor = 2;
+
+void setup () {
+  Serial.begin(9600);
+  pinMode(Motor,OUTPUT);
+  digitalWrite(Motor,LOW);
+  Serial.print("Water Level: ");
+}
+
+void loop() {
+  val = analogRead(watersensor);
+    Serial.println(val);
+
+  if (val<=100)
+  {
+    Serial.println("Empty ");
+    digitalWrite(Motor,HIGH);
+  }
+  else if (val>100 && val<=350)
+  {
+    Serial.println("Low ");
+    digitalWrite(Motor,HIGH);
+  }
+  else if (val>350 && val<=375)
+  {
+    Serial.println("Medium ");
+  }
+  else if (val>375)
+  {
+    Serial.println("High ");
+    digitalWrite(Motor,LOW);        
+  }
+  delay(1000);
+}
