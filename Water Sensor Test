@@ -1,0 +1,23 @@
+const int read = A0;
+int value;
+
+void setup() 
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  value = analogRead(read);
+
+  if (value <= 300) {
+    Serial.println("Empty ");
+  } else if (value > 300 && value <= 500) {
+    Serial.println("Low ");
+  } else if (value > 500 && value <= 600) {
+    Serial.println("Medium ");
+  } else if (value > 600) {
+    Serial.println("High ");
+  }
+  delay(100);
+}
